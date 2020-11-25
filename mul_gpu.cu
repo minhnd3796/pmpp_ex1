@@ -11,7 +11,7 @@
 
 __global__ void matrix_mul_kernel(float *m, float *n, float *p, int m_width, int n_width, int p_width, int p_height, size_t m_pitch, size_t n_pitch, size_t p_pitch)
 {
-    int tx = blockIdx.x * blockDim.y + threadIdx.x;
+    int tx = blockIdx.x * blockDim.x + threadIdx.x;
     if (tx >= p_width)
         return;
     int ty = blockIdx.y * blockDim.y + threadIdx.y;
